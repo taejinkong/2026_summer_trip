@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+</head>
+<body>
+<title>군산 가족여행 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{
+  --bg:#eaeef1; --frame:#f7f9fa; --surface:#ffffff; --line:#e2e8ec;
+  --ink:#1c2a36; --ink2:#54646f; --muted:#8a99a4;
+  --sea:#0f6e8f; --sea-soft:#e3f0f5; --sea-deep:#0b566f;
+  --night:#4a4f9e; --night-soft:#ebecf7;
+  --sand:#c07a3d; --sand-soft:#f7ede2;
+  --good:#1f7a43; --good-soft:#e6f2ea;
+  --warn:#a05a12; --warn-soft:#fbf0df;
+  --chart-line:#1273a3; --chart-fill:rgba(18,115,163,.14);
+  --zone:#dff0e6; --zone-line:#1f7a43;
+  --shadow:0 1px 3px rgba(28,42,54,.08),0 4px 16px rgba(28,42,54,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0c1116; --frame:#121a21; --surface:#1a242d; --line:#2a3742;
+    --ink:#e8eef2; --ink2:#a7b6c0; --muted:#71818d;
+    --sea:#5fb4d6; --sea-soft:#153241; --sea-deep:#8ccbe4;
+    --night:#a3a8e8; --night-soft:#242a4a;
+    --sand:#dfa26b; --sand-soft:#3a2c1d;
+    --good:#63c186; --good-soft:#1a3325;
+    --warn:#e0a45c; --warn-soft:#3a2d18;
+    --chart-line:#5fb4d6; --chart-fill:rgba(95,180,214,.16);
+    --zone:#1a3325; --zone-line:#63c186;
+    --shadow:0 1px 3px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.3);
+  }
+}
+:root[data-theme="light"]{
+  --bg:#eaeef1; --frame:#f7f9fa; --surface:#ffffff; --line:#e2e8ec;
+  --ink:#1c2a36; --ink2:#54646f; --muted:#8a99a4;
+  --sea:#0f6e8f; --sea-soft:#e3f0f5; --sea-deep:#0b566f;
+  --night:#4a4f9e; --night-soft:#ebecf7;
+  --sand:#c07a3d; --sand-soft:#f7ede2;
+  --good:#1f7a43; --good-soft:#e6f2ea;
+  --warn:#a05a12; --warn-soft:#fbf0df;
+  --chart-line:#1273a3; --chart-fill:rgba(18,115,163,.14);
+  --zone:#dff0e6; --zone-line:#1f7a43;
+  --shadow:0 1px 3px rgba(28,42,54,.08),0 4px 16px rgba(28,42,54,.05);
+}
+:root[data-theme="dark"]{
+  --bg:#0c1116; --frame:#121a21; --surface:#1a242d; --line:#2a3742;
+  --ink:#e8eef2; --ink2:#a7b6c0; --muted:#71818d;
+  --sea:#5fb4d6; --sea-soft:#153241; --sea-deep:#8ccbe4;
+  --night:#a3a8e8; --night-soft:#242a4a;
+  --sand:#dfa26b; --sand-soft:#3a2c1d;
+  --good:#63c186; --good-soft:#1a3325;
+  --warn:#e0a45c; --warn-soft:#3a2d18;
+  --chart-line:#5fb4d6; --chart-fill:rgba(95,180,214,.16);
+  --zone:#1a3325; --zone-line:#63c186;
+  --shadow:0 1px 3px rgba(0,0,0,.4),0 4px 16px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font-family:"Apple SD Gothic Neo","Pretendard","Noto Sans KR",system-ui,-apple-system,sans-serif;
+  line-height:1.55; -webkit-font-smoothing:antialiased;
+}
+.phone{
+  max-width:420px; margin:0 auto; min-height:100vh; min-height:100dvh;
+  background:var(--frame); display:flex; flex-direction:column;
+  box-shadow:0 0 40px rgba(28,42,54,.08);
+}
+main{flex:1; padding:20px 18px 92px}
+.page{display:none}
+.page.active{display:block; animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){ .page.active{animation:none} }
+
+/* ---------- shared ---------- */
+.card{background:var(--surface); border-radius:16px; padding:18px; box-shadow:var(--shadow); margin-bottom:14px}
+h1{font-size:1.5rem; margin:0; text-wrap:balance; letter-spacing:-.01em}
+h2{font-size:1.05rem; margin:0 0 12px; letter-spacing:-.01em}
+h3{font-size:.95rem; margin:0 0 6px}
+.eyebrow{font-size:.7rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+.sub{color:var(--ink2); font-size:.85rem}
+.pill{display:inline-block; font-size:.72rem; font-weight:700; padding:3px 10px; border-radius:999px}
+.pill.sea{background:var(--sea-soft); color:var(--sea)}
+.pill.good{background:var(--good-soft); color:var(--good)}
+.pill.warn{background:var(--warn-soft); color:var(--warn)}
+.pill.night{background:var(--night-soft); color:var(--night)}
+
+/* ---------- home ---------- */
+.hero{text-align:center; padding:34px 0 8px}
+.hero .dates{color:var(--ink2); font-size:.9rem; margin-top:6px}
+.dday{margin:14px auto 4px; display:inline-block; font-variant-numeric:tabular-nums}
+.crew{display:flex; justify-content:center; gap:8px; margin-top:12px; flex-wrap:wrap}
+.menu{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:26px}
+.menu button{
+  background:var(--surface); border:0; border-radius:16px; padding:24px 10px 20px;
+  box-shadow:var(--shadow); cursor:pointer; color:var(--ink);
+  font-family:inherit; font-size:.95rem; font-weight:700;
+  display:flex; flex-direction:column; align-items:center; gap:12px;
+}
+.menu button:focus-visible,.tabbar button:focus-visible,.daytabs button:focus-visible{outline:2px solid var(--sea); outline-offset:2px}
+.ic{width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center}
+.ic svg{width:26px; height:26px}
+.ic.sea{background:var(--sea-soft); color:var(--sea)}
+.ic.night{background:var(--night-soft); color:var(--night)}
+.ic.good{background:var(--good-soft); color:var(--good)}
+.ic.sand{background:var(--sand-soft); color:var(--sand)}
+.notice{margin-top:18px; text-align:left}
+.notice b{color:var(--night)}
+
+/* ---------- schedule ---------- */
+.daytabs{display:flex; gap:8px; margin-bottom:16px}
+.daytabs button{
+  flex:1; border:1px solid var(--line); background:var(--surface); border-radius:12px;
+  padding:8px 0; cursor:pointer; font-family:inherit; color:var(--ink2); line-height:1.3;
+}
+.daytabs button .d{font-size:.68rem; display:block; color:var(--muted); font-variant-numeric:tabular-nums}
+.daytabs button .n{font-weight:700; font-size:.88rem}
+.daytabs button.on{background:var(--ink); border-color:var(--ink); color:var(--frame)}
+.daytabs button.on .d{color:var(--frame); opacity:.7}
+.dayhead{display:flex; align-items:baseline; gap:8px; margin:2px 2px 12px}
+.dayhead h2{margin:0}
+.tl{list-style:none; margin:0; padding:0}
+.tl li{position:relative; padding:0 0 18px 34px}
+.tl li::before{
+  content:attr(data-n); position:absolute; left:0; top:1px; width:22px; height:22px;
+  border-radius:50%; background:var(--sea); color:#fff; font-size:.7rem; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+.tl li.night::before{background:var(--night)}
+.tl li:not(:last-child)::after{
+  content:""; position:absolute; left:10.5px; top:26px; bottom:2px; width:1.5px; background:var(--line);
+}
+.tl .t{font-size:.75rem; color:var(--muted); font-variant-numeric:tabular-nums}
+.tl .name{font-weight:700; font-size:.92rem}
+.tl .note{font-size:.8rem; color:var(--ink2)}
+
+/* ---------- tide ---------- */
+.stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px}
+.stat{background:var(--surface); border-radius:14px; padding:12px 14px; box-shadow:var(--shadow)}
+.stat .v{font-size:1.25rem; font-weight:800; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
+.stat .v small{font-size:.75rem; font-weight:600; color:var(--ink2)}
+.stat .k{font-size:.72rem; color:var(--muted); margin-top:1px}
+.alertcard{border-left:4px solid var(--warn); }
+.alertcard h2{color:var(--warn)}
+.alertcard ol{margin:8px 0 0; padding-left:18px; font-size:.85rem; color:var(--ink2)}
+.alertcard ol li{margin-bottom:6px}
+.plan{list-style:none; margin:10px 0 0; padding:0}
+.plan li{display:flex; gap:10px; align-items:baseline; padding:7px 0; border-top:1px dashed var(--line); font-size:.88rem}
+.plan li:first-child{border-top:0}
+.plan .pt{font-weight:800; font-variant-numeric:tabular-nums; color:var(--night); min-width:52px}
+.plan li.hl{font-weight:700}
+.chartwrap{position:relative}
+.chartwrap svg{display:block; width:100%; height:auto}
+.legendline{display:flex; gap:14px; margin-top:8px; font-size:.72rem; color:var(--ink2); flex-wrap:wrap}
+.legendline span{display:inline-flex; align-items:center; gap:5px}
+.sw{width:12px; height:3px; border-radius:2px; background:var(--chart-line)}
+.sw.zone{height:8px; background:var(--zone); border:1px solid var(--zone-line)}
+.tooltip{
+  position:absolute; pointer-events:none; background:var(--ink); color:var(--frame);
+  font-size:.72rem; padding:4px 8px; border-radius:8px; white-space:nowrap;
+  transform:translate(-50%,-130%); opacity:0; transition:opacity .1s; font-variant-numeric:tabular-nums;
+}
+.pointtips .tip{display:flex; gap:10px; padding:10px 0; border-top:1px solid var(--line); font-size:.86rem}
+.pointtips .tip:first-of-type{border-top:0; padding-top:2px}
+.tip .em{font-size:1.15rem; line-height:1.4}
+.safe li{margin-bottom:4px}
+.src{font-size:.72rem; color:var(--muted); margin-top:8px}
+
+/* ---------- reservations ---------- */
+.menu .wide{grid-column:1 / -1; flex-direction:row; justify-content:flex-start; padding:16px 18px; gap:14px}
+.menu .wide .ic{width:44px; height:44px}
+.resv .head{display:flex; align-items:center; gap:10px; margin-bottom:4px}
+.resv .head .em{font-size:1.3rem}
+.resv .head h3{margin:0}
+.resv .fixed{list-style:none; margin:10px 0 4px; padding:0; font-size:.86rem}
+.resv .fixed li{display:flex; gap:10px; padding:6px 0; border-top:1px dashed var(--line)}
+.resv .fixed li:first-child{border-top:0}
+.resv .fixed .k{color:var(--muted); min-width:64px; flex-shrink:0; font-size:.78rem; padding-top:1px}
+.resv .fixed b{font-weight:700}
+.fields{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px}
+.fields .f{display:flex; flex-direction:column; gap:3px}
+.fields .f.full{grid-column:1 / -1}
+.fields label{font-size:.7rem; font-weight:700; color:var(--muted); letter-spacing:.02em}
+.fields input{
+  border:1px solid var(--line); background:var(--frame); color:var(--ink);
+  border-radius:10px; padding:8px 10px; font-family:inherit; font-size:.86rem; width:100%;
+}
+.fields input:focus-visible{outline:2px solid var(--sea); outline-offset:1px; border-color:transparent}
+.fields input::placeholder{color:var(--muted); opacity:.7}
+.savenote{font-size:.72rem; color:var(--muted); margin-top:10px}
+.savenote.on{color:var(--good)}
+.resv .warnline{margin-top:10px; background:var(--warn-soft); color:var(--warn); border-radius:10px; padding:8px 10px; font-size:.8rem}
+
+/* ---------- checklist ---------- */
+.prog{font-size:.8rem; color:var(--ink2); margin-bottom:12px}
+.prog b{color:var(--sea)}
+.chk{list-style:none; margin:0; padding:0}
+.chk li{border-top:1px solid var(--line)}
+.chk li:first-child{border-top:0}
+.chk label{display:flex; gap:10px; align-items:flex-start; padding:9px 2px; cursor:pointer; font-size:.9rem}
+.chk input{width:18px; height:18px; margin:2px 0 0; accent-color:var(--sea); flex-shrink:0}
+.chk input:checked + span{color:var(--muted); text-decoration:line-through}
+.chk .amt{color:var(--sea); font-weight:700}
+.reset{border:0; background:none; color:var(--muted); font-size:.75rem; cursor:pointer; font-family:inherit; text-decoration:underline; padding:0}
+
+/* ---------- food ---------- */
+.food .menuLine{font-size:.8rem; color:var(--sea); font-weight:700; margin-bottom:6px}
+.food p{margin:0; font-size:.86rem; color:var(--ink2)}
+.food .tip{margin-top:8px; background:var(--sand-soft); color:var(--sand); border-radius:10px; padding:8px 10px; font-size:.8rem}
+
+/* ---------- tab bar ---------- */
+.tabbar{
+  position:fixed; bottom:0; left:50%; transform:translateX(-50%);
+  width:100%; max-width:420px; background:var(--surface);
+  border-top:1px solid var(--line); display:flex; z-index:10;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+.tabbar button{
+  flex:1; background:none; border:0; padding:9px 0 8px; cursor:pointer;
+  color:var(--muted); font-family:inherit; font-size:.66rem;
+  display:flex; flex-direction:column; align-items:center; gap:3px;
+}
+.tabbar button svg{width:21px; height:21px}
+.tabbar button.on{color:var(--sea); font-weight:700}
+</style>
+
+<div class="phone">
+<main>
+
+<!-- ================= HOME ================= -->
+<section class="page active" id="page-home">
+  <div class="hero">
+    <div class="eyebrow">Gunsan &amp; Byeonsan</div>
+    <h1>군산 가족여행 2026</h1>
+    <div class="dates">2026. 8. 1 (토) ~ 8. 3 (월) · 2박 3일</div>
+    <div class="dday pill sea" id="dday"></div>
+    <div class="crew">
+      <span class="pill night">2가족 · 7명</span>
+      <span class="pill sea">어른 4</span>
+      <span class="pill good">11살 남아 2 · 9살 여아 1</span>
+    </div>
+  </div>
+
+  <div class="menu">
+    <button data-go="schedule">
+      <span class="ic sea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+      일정표
+    </button>
+    <button data-go="tide">
+      <span class="ic night"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><circle cx="17" cy="5" r="2.5"/></svg></span>
+      물때 · 해루질
+    </button>
+    <button data-go="check">
+      <span class="ic good"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span>
+      준비물 체크
+    </button>
+    <button data-go="food">
+      <span class="ic sand"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v7a2 2 0 002 2h0a2 2 0 002-2V3M7 3v18M17 3c-1.5 1-2.5 3-2.5 6v3H17m0-9v18"/></svg></span>
+      맛집 가이드
+    </button>
+    <button data-go="resv" class="wide">
+      <span class="ic sea"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9V7a2 2 0 012-2h14a2 2 0 012 2v2a2.5 2.5 0 000 5v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2.5 2.5 0 000-5z"/><path d="M14 5v14" stroke-dasharray="2.5 2.5"/></svg></span>
+      예약 확인
+    </button>
+  </div>
+
+  <div class="card notice">
+    <h2>이번 여행 하이라이트 🌙</h2>
+    <p class="sub" style="margin:0">
+      <b>8/1(토) 밤, 펜션 앞 해루질!</b><br>
+      이날은 <b>10물(사리)</b> — 물이 크게 빠지는 날이에요.
+      간조가 <b>밤 10시 34분</b>이라 저녁 8시엔 아직 물이 덜 빠져요.
+      <b>8시 장비 점검 → 9시 입수</b>가 최적. 자세한 내용은 물때 탭에서 확인하세요.
+    </p>
+  </div>
+</section>
+
+<!-- ================= SCHEDULE ================= -->
+<section class="page" id="page-schedule">
+  <div class="eyebrow" style="margin-bottom:8px">Itinerary</div>
+  <div class="daytabs" id="daytabs">
+    <button data-day="0" class="on"><span class="d">08-01 토</span><span class="n">Day 1</span></button>
+    <button data-day="1"><span class="d">08-02 일</span><span class="n">Day 2</span></button>
+    <button data-day="2"><span class="d">08-03 월</span><span class="n">Day 3</span></button>
+  </div>
+  <div id="dayviews"></div>
+</section>
+
+<!-- ================= TIDE ================= -->
+<section class="page" id="page-tide">
+  <div class="eyebrow" style="margin-bottom:4px">Tide Dashboard</div>
+  <h2 style="margin-bottom:2px">8/1(토) 변산 격포 물때</h2>
+  <p class="sub" style="margin:0 0 14px">네버엔딩스토리 펜션 앞 · 밤 해루질 기준</p>
+
+  <div class="stats">
+    <div class="stat"><div class="v">10물 <small>사리</small></div><div class="k">물이 크게 빠지는 날</div></div>
+    <div class="stat"><div class="v">22:34</div><div class="k">야간 간조 시각</div></div>
+    <div class="stat"><div class="v">78<small>cm</small></div><div class="k">간조 수위 (100cm 이하면 좋음)</div></div>
+    <div class="stat"><div class="v" style="color:var(--good)">적합도 상</div><div class="k">소라 · 박하지 서식지 노출</div></div>
+  </div>
+
+  <div class="card alertcard">
+    <h2>⚠️ 저녁 8시 입수는 일러요</h2>
+    <ol>
+      <li><b>물이 아직 많이 차 있어요.</b> 간조(22:34)까지 2시간 반이나 남아 포인트가 안 드러나요.</li>
+      <li><b>충분히 어둡지 않아요.</b> 일몰이 19:40이라 8시엔 랜턴 불빛이 물속을 잘 못 뚫어요.</li>
+    </ol>
+    <ul class="plan">
+      <li><span class="pt">20:00</span><span>복장 · 장비 점검, 아이들 구명조끼 착용</span></li>
+      <li class="hl"><span class="pt">21:00</span><span>랜턴 켜고 입수 시작 (골든타임 시작) 🔦</span></li>
+      <li><span class="pt">22:30</span><span><b>철수 알람!</b> 간조 지나면 서해 물은 순식간에 차올라요</span></li>
+      <li><span class="pt">22:40</span><span>완전 철수 → 펜션 복귀, 손질 &amp; 야식</span></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>저녁 조위 곡선 (예상)</h2>
+    <div class="chartwrap" id="tideChart"></div>
+    <div class="legendline">
+      <span><span class="sw"></span>예상 수위</span>
+      <span><span class="sw zone"></span>해루질 적정 (≤100cm)</span>
+    </div>
+    <p class="src">간조 22:34 · 78cm 기준 예상 곡선 — 당일 바다타임 등 물때표로 꼭 재확인하세요.</p>
+  </div>
+
+  <div class="card pointtips">
+    <h2>펜션 앞 포인트 팁</h2>
+    <div class="tip"><span class="em">🦀</span><span><b>박하지(돌게)</b> — 물 빠진 바위밭 사이 <b>돌이나 작은 암초 밑</b>을 집게나 랜턴으로 수색.</span></div>
+    <div class="tip"><span class="em">🐚</span><span><b>소라</b> — 물이 자작하게 고인 <b>바위 틈새, 물길 경계선 부근 바위</b>에 붙어 있어요.</span></div>
+    <div class="tip"><span class="em">🏖️</span><span><b>지형</b> — 펜션 앞은 갯벌 + 바위/돌밭이 섞인 지형. 아쿠아슈즈 필수!</span></div>
+  </div>
+
+  <div class="card">
+    <h2>아이들 안전 수칙 🧒</h2>
+    <ul class="sub safe" style="margin:0; padding-left:18px">
+      <li>구명조끼 + 아쿠아슈즈 + 목장갑 착용, 어른 1명당 아이 1명 전담</li>
+      <li>랜턴(헤드랜턴 추천) 1인 1개, 여분 배터리</li>
+      <li>22:30 휴대폰 알람 필수 — 간조 후 서해는 물이 빠르게 차올라요</li>
+      <li>물길 경계선 너머 깊은 곳 금지, 미끄러운 바위 조심</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= RESERVATIONS ================= -->
+<section class="page" id="page-resv">
+  <div class="eyebrow" style="margin-bottom:4px">Reservations</div>
+  <h2 style="margin-bottom:2px">예약 확인</h2>
+  <p class="sub" style="margin:0 0 14px">입력한 내용은 이 기기에 자동 저장돼요</p>
+
+  <div class="card resv">
+    <div class="head"><span class="em">🏡</span><h3>네버엔딩스토리 펜션</h3></div>
+    <span class="pill sea">숙소 · 2박</span>
+    <ul class="fixed">
+      <li><span class="k">위치</span><span>변산반도 격포 인근 · 펜션 앞 해루질 포인트</span></li>
+      <li><span class="k">체크인</span><span><b>8/1(토) 17:00</b> 입실 예정</span></li>
+      <li><span class="k">체크아웃</span><span><b>8/3(월) 오전</b> (시간은 펜션 안내 확인)</span></li>
+      <li><span class="k">인원</span><span>2가족 7명 (어른 4 · 아이 3)</span></li>
+      <li><span class="k">일정 메모</span><span>바베큐 18:30 · 해루질 21:00 (물때 탭 참고)</span></li>
+    </ul>
+    <div class="fields" data-resv="pension">
+      <div class="f"><label for="p_name">예약자명</label><input id="p_name" placeholder="예: 홍길동"></div>
+      <div class="f"><label for="p_no">예약번호</label><input id="p_no" placeholder="예: 2026-0801-###"></div>
+      <div class="f"><label for="p_room">객실명</label><input id="p_room" placeholder="예: 바다뷰 201호"></div>
+      <div class="f"><label for="p_pay">결제금액</label><input id="p_pay" placeholder="예: 000,000원 · 잔금 여부" inputmode="text"></div>
+      <div class="f full"><label for="p_tel">펜션 연락처</label><input id="p_tel" placeholder="예: 063-000-0000" inputmode="tel"></div>
+      <div class="f full"><label for="p_memo">메모</label><input id="p_memo" placeholder="예: 바베큐 그릴 대여 예약함, 숯 별도"></div>
+    </div>
+    <div class="warnline">🍖 바베큐 그릴 · 숯 이용은 보통 사전 예약/추가 요금이 있어요. 체크인 전에 펜션에 확인해 두세요.</div>
+  </div>
+
+  <div class="card resv">
+    <div class="head"><span class="em">🪂</span><h3>선유도 짚라인</h3></div>
+    <span class="pill night">액티비티 · Day 2</span>
+    <ul class="fixed">
+      <li><span class="k">이용일</span><span><b>8/2(일) 오전</b> · 선유도 해수욕장 일대</span></li>
+      <li><span class="k">인원</span><span>탑승 인원 입력란에 기록 (보통 현장 발권)</span></li>
+    </ul>
+    <div class="fields" data-resv="zipline">
+      <div class="f"><label for="z_time">예약/이용 시간</label><input id="z_time" placeholder="예: 10:00 또는 현장 발권"></div>
+      <div class="f"><label for="z_cnt">탑승 인원</label><input id="z_cnt" placeholder="예: 어른 2 · 아이 2"></div>
+      <div class="f"><label for="z_pay">요금</label><input id="z_pay" placeholder="예: 1인 00,000원"></div>
+      <div class="f"><label for="z_tel">문의 연락처</label><input id="z_tel" placeholder="예: 063-000-0000" inputmode="tel"></div>
+      <div class="f full"><label for="z_memo">메모</label><input id="z_memo" placeholder="예: 우천 시 운영 여부 당일 전화 확인"></div>
+    </div>
+    <div class="warnline">🧒 짚라인은 키·체중 제한이 있을 수 있어요. 9살 아이 탑승 가능 여부를 미리 전화로 확인하는 걸 추천해요. 안 되면 갯벌 체험으로!</div>
+  </div>
+
+  <p class="savenote" id="resvSave">항목을 입력하면 자동 저장됩니다</p>
+</section>
+
+<!-- ================= CHECKLIST ================= -->
+<section class="page" id="page-check">
+  <div class="eyebrow" style="margin-bottom:4px">Packing &amp; Shopping</div>
+  <h2 style="margin-bottom:4px">준비물 체크리스트</h2>
+  <p class="prog"><b id="chkDone">0</b> / <span id="chkTotal">0</span> 완료 · <button class="reset" id="chkReset">전체 초기화</button></p>
+  <div id="checklists"></div>
+</section>
+
+<!-- ================= FOOD ================= -->
+<section class="page" id="page-food">
+  <div class="eyebrow" style="margin-bottom:4px">Restaurants</div>
+  <h2 style="margin-bottom:2px">아이랑 가기 좋은 군산 맛집</h2>
+  <p class="sub" style="margin:0 0 14px">맵지 않고, 가족 단위로 앉기 좋은 곳 위주</p>
+  <div id="foodcards"></div>
+  <div class="card food">
+    <h3>💡 중식 방문 팁</h3>
+    <p>유명한 '지린성' 고추짜장은 <b>매우 매워서</b> 아이들과는 어려워요. 아이들과는 탕수육·간짜장이 맛있는 전통 중식당(빈해원)을 추천!</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= TAB BAR ================= -->
+<nav class="tabbar" id="tabbar">
+  <button data-go="home" class="on">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8"/><path d="M5 9.5V21h14V9.5"/></svg>홈
+  </button>
+  <button data-go="schedule">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>일정
+  </button>
+  <button data-go="tide">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 17c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><path d="M3 12c2-2 4-2 6 0s4 2 6 0 4-2 6 0"/><circle cx="17" cy="5" r="2.5"/></svg>물때
+  </button>
+  <button data-go="resv">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9V7a2 2 0 012-2h14a2 2 0 012 2v2a2.5 2.5 0 000 5v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2.5 2.5 0 000-5z"/><path d="M14 5v14" stroke-dasharray="2.5 2.5"/></svg>예약
+  </button>
+  <button data-go="check">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>준비물
+  </button>
+  <button data-go="food">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 3v7a2 2 0 002 2h0a2 2 0 002-2V3M7 3v18M17 3c-1.5 1-2.5 3-2.5 6v3H17m0-9v18"/></svg>맛집
+  </button>
+</nav>
+</div>
+
+<script>
+/* ---------- navigation ---------- */
+const pages = ["home","schedule","tide","resv","check","food"];
+function go(name){
+  pages.forEach(p=>{
+    document.getElementById("page-"+p).classList.toggle("active", p===name);
+  });
+  document.querySelectorAll("#tabbar button").forEach(b=>b.classList.toggle("on", b.dataset.go===name));
+  window.scrollTo(0,0);
+}
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+
+/* ---------- D-day ---------- */
+(function(){
+  const start = new Date(2026,7,1), today = new Date();
+  today.setHours(0,0,0,0);
+  const diff = Math.round((start-today)/864e5);
+  const el = document.getElementById("dday");
+  el.textContent = diff>0 ? "D-"+diff : diff===0 ? "D-DAY 🎉" : (diff>=-2 ? "여행 중 🏖️" : "여행 끝!");
+})();
+
+/* ---------- schedule data ---------- */
+const days = [
+ {title:"레트로 체험 & 해루질 밤", items:[
+  {t:"오전",  n:"군산으로 출발", d:"휴게소 간식 타임"},
+  {t:"12:30", n:"점심 — 군산 명물 짬뽕 or 물짜장", d:"빈해원 등 (맛집 탭 참고)"},
+  {t:"14:00", n:"경암동 철길마을", d:"달고나 만들기 · 옛날과자 · 추억의 뽑기"},
+  {t:"15:30", n:"군산 근대역사박물관", d:"실내라 더위 피하기 좋아요"},
+  {t:"17:00", n:"네버엔딩스토리 펜션 체크인", d:"변산 격포 · 짐 풀고 정비"},
+  {t:"18:30", n:"펜션 바베큐 파티 🍖", d:"마시멜로 꼬치구이는 필수!"},
+  {t:"20:00", n:"해루질 장비 점검", d:"구명조끼 · 랜턴 · 양동이 (물때 탭!)", night:true},
+  {t:"21:00", n:"펜션 앞 해루질 입수 🔦", d:"골든타임 21:00~22:34", night:true},
+  {t:"22:30", n:"철수 알람 → 야식 & 취침", d:"간조 22:34 후 물이 빠르게 차요", night:true},
+ ]},
+ {title:"고군산군도 물놀이 & 액티비티", items:[
+  {t:"오전",  n:"선유도 해수욕장 이동", d:"짚라인 or 갯벌 체험"},
+  {t:"12:30", n:"점심 — 선유도/무녀도", d:"해산물 · 칼국수 · 수제버거"},
+  {t:"14:30", n:"옥돌해수욕장 데크길 산책", d:"or 숙소 물놀이로 체력 조절"},
+  {t:"18:00", n:"저녁 — 군산 시내 맛집", d:"떡갈비 · 한정식 (맛집 탭 참고)"},
+  {t:"20:00", n:"숙소에서 보드게임 & 휴식", d:"전날 밤샘(?) 해루질 회복 타임"},
+ ]},
+ {title:"명소 탐방 & 기념품, 귀가", items:[
+  {t:"오전",  n:"초원사진관", d:"'8월의 크리스마스' 촬영지 기념사진"},
+  {t:"11:00", n:"히로쓰 가옥 (신흥동 일본식 가옥)", d:"근대문화유산 산책"},
+  {t:"12:30", n:"점심 — 한일옥 소고기무국", d:"초원사진관 바로 맞은편"},
+  {t:"14:00", n:"이성당 빵쇼핑 🍞", d:"단팥빵 · 야채빵 포장, 밀크쉐이크"},
+  {t:"15:00", n:"안전하게 귀가", d:"수고했어요! 🚗"},
+ ]},
+];
+const dayviews = document.getElementById("dayviews");
+function renderDay(i){
+  const d = days[i];
+  dayviews.innerHTML = `<div class="card">
+    <div class="dayhead"><h2>${d.title}</h2></div>
+    <ul class="tl">${d.items.map((it,j)=>`
+      <li data-n="${j+1}" class="${it.night?"night":""}">
+        <div class="t">${it.t}</div>
+        <div class="name">${it.n}</div>
+        <div class="note">${it.d}</div>
+      </li>`).join("")}
+    </ul></div>`;
+}
+document.querySelectorAll("#daytabs button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("#daytabs button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); renderDay(+b.dataset.day);
+}));
+renderDay(0);
+
+/* ---------- tide chart ---------- */
+(function(){
+  const W=360,H=210,L=38,R=12,T=16,B=30;
+  const pw=W-L-R, ph=H-T-B;
+  // cosine tide model: low 22:34=78cm, prev high ~16:22 assumed ~620cm (10물 사리)
+  const lowT=22+34/60, period=12.42, high=620, low=78;
+  const mid=(high+low)/2, amp=(high-low)/2;
+  const lvl=t=>mid+amp*Math.cos(2*Math.PI*(t-(lowT-period/2))/period);
+  const t0=18,t1=24, ymax=650;
+  const X=t=>L+(t-t0)/(t1-t0)*pw, Y=v=>T+ph*(1-v/ymax);
+  let pts=[];
+  for(let t=t0;t<=t1+1e-6;t+=1/6) pts.push([X(t),Y(lvl(t)),t,lvl(t)]);
+  const path=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join("");
+  const gold0=X(21), gold1=X(lowT);
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="8월 1일 저녁 예상 조위 곡선. 22시 34분 간조 78센티미터.">`;
+  // safe zone <=100cm
+  s+=`<rect x="${L}" y="${Y(100)}" width="${pw}" height="${Y(0)-Y(100)}" fill="var(--zone)"/>`;
+  s+=`<line x1="${L}" x2="${L+pw}" y1="${Y(100)}" y2="${Y(100)}" stroke="var(--zone-line)" stroke-width="1" stroke-dasharray="3 3"/>`;
+  // golden time band
+  s+=`<rect x="${gold0}" y="${T}" width="${gold1-gold0}" height="${ph}" fill="var(--night)" opacity=".08"/>`;
+  // grid + x labels
+  for(let t=18;t<=24;t++){
+    s+=`<line x1="${X(t)}" x2="${X(t)}" y1="${T}" y2="${T+ph}" stroke="var(--line)" stroke-width="1"/>`;
+    s+=`<text x="${X(t)}" y="${H-12}" text-anchor="middle" font-size="9" fill="var(--muted)">${t===24?"24시":t+"시"}</text>`;
+  }
+  for(const v of [200,400,600]){
+    s+=`<text x="${L-5}" y="${Y(v)+3}" text-anchor="end" font-size="9" fill="var(--muted)">${v}</text>`;
+  }
+  s+=`<text x="${L-5}" y="${T-4}" text-anchor="end" font-size="8" fill="var(--muted)">cm</text>`;
+  // area + line
+  s+=`<path d="${path} L${X(t1)} ${Y(0)} L${X(t0)} ${Y(0)} Z" fill="var(--chart-fill)"/>`;
+  s+=`<path d="${path}" fill="none" stroke="var(--chart-line)" stroke-width="2" stroke-linecap="round"/>`;
+  // sunset marker
+  const sunT=19+40/60;
+  s+=`<line x1="${X(sunT)}" x2="${X(sunT)}" y1="${T}" y2="${T+ph}" stroke="var(--sand)" stroke-width="1.5" stroke-dasharray="4 3"/>`;
+  s+=`<text x="${X(sunT)+3}" y="${T+10}" font-size="8.5" fill="var(--sand)">일몰 19:40</text>`;
+  // 20:00 warning point
+  s+=`<circle cx="${X(20)}" cy="${Y(lvl(20))}" r="4.5" fill="var(--warn)" stroke="var(--surface)" stroke-width="2"/>`;
+  s+=`<text x="${X(20)+6}" y="${Y(lvl(20))-6}" font-size="8.5" fill="var(--warn)" font-weight="700">20시 아직 깊어요</text>`;
+  // 21:00 entry
+  s+=`<circle cx="${X(21)}" cy="${Y(lvl(21))}" r="4.5" fill="var(--night)" stroke="var(--surface)" stroke-width="2"/>`;
+  s+=`<text x="${X(21)+6}" y="${Y(lvl(21))+3}" font-size="8.5" fill="var(--night)" font-weight="700">21시 입수 🔦</text>`;
+  // low tide emphasized endpoint
+  s+=`<circle cx="${X(lowT)}" cy="${Y(low)}" r="5" fill="var(--chart-line)" stroke="var(--surface)" stroke-width="2"/>`;
+  s+=`<text x="${X(lowT)}" y="${Y(low)-10}" text-anchor="middle" font-size="9" fill="var(--chart-line)" font-weight="800">간조 22:34 · 78cm</text>`;
+  s+=`</svg>`;
+  const wrap=document.getElementById("tideChart");
+  wrap.innerHTML=s+`<div class="tooltip" id="tideTip"></div>`;
+  // hover/touch tooltip
+  const svg=wrap.querySelector("svg"), tip=document.getElementById("tideTip");
+  function show(ev){
+    const r=svg.getBoundingClientRect();
+    const px=(ev.touches?ev.touches[0].clientX:ev.clientX)-r.left;
+    const t=Math.min(t1,Math.max(t0, t0+(px/r.width*W-L)/pw*(t1-t0)));
+    const v=Math.max(low,lvl(t));
+    const hh=Math.floor(t), mm=Math.round((t-hh)*60);
+    tip.style.left=(X(t)/W*100)+"%";
+    tip.style.top=(Y(v)/H*100)+"%";
+    tip.style.opacity=1;
+    tip.textContent=`${hh}:${String(mm).padStart(2,"0")} · 약 ${Math.round(v)}cm`;
+  }
+  svg.addEventListener("mousemove",show);
+  svg.addEventListener("touchstart",show,{passive:true});
+  svg.addEventListener("touchmove",show,{passive:true});
+  svg.addEventListener("mouseleave",()=>tip.style.opacity=0);
+  svg.addEventListener("touchend",()=>tip.style.opacity=0);
+})();
+
+/* ---------- reservations ---------- */
+(function(){
+  const RKEY="gunsan-trip-resv";
+  let rsaved={}; try{rsaved=JSON.parse(localStorage.getItem(RKEY))||{}}catch(e){}
+  const inputs=document.querySelectorAll(".fields input");
+  inputs.forEach(i=>{ if(rsaved[i.id]) i.value=rsaved[i.id]; });
+  const note=document.getElementById("resvSave");
+  let timer=null;
+  inputs.forEach(i=>i.addEventListener("input",()=>{
+    rsaved[i.id]=i.value;
+    try{localStorage.setItem(RKEY,JSON.stringify(rsaved))}catch(e){}
+    note.textContent="✓ 저장됨"; note.classList.add("on");
+    clearTimeout(timer);
+    timer=setTimeout(()=>{note.textContent="항목을 입력하면 자동 저장됩니다"; note.classList.remove("on")},1500);
+  }));
+})();
+
+/* ---------- checklist ---------- */
+const lists = [
+ {name:"🌙 해루질 장비", items:[
+  ["구명조끼 (아이 3명 필수)"],["헤드랜턴/랜턴 + 여분 배터리","1인 1개"],["아쿠아슈즈 (전원)"],
+  ["목장갑 · 집게"],["양동이 · 뜰채"],["방수팩"],["여벌 옷 · 수건"],
+ ]},
+ {name:"🥩 바베큐 장보기 (7인)", items:[
+  ["돼지 목살","1.2kg"],["삼겹살 or 항정살","600~800g"],["수제 소시지 · 구이용 떡","1~2팩"],
+  ["닭꼬치 or 훈제오리 (선택)","1팩"],["대하 · 가리비 (선택)","1팩"],
+  ["모둠 버섯 · 양파 2 · 고구마/감자"],["상추 · 깻잎 · 오이 · 당근 · 청양고추"],
+  ["쌈장 · 허브솔트 · 참기름 · 와사비"],["포기김치 · 쌈무 · 장아찌"],
+  ["마시멜로 + 긴 나무꼬치","숯불 필수 간식"],["제철 과일 (수박 · 복숭아 · 포도)"],
+ ]},
+ {name:"🍚 식사 · 음료", items:[
+  ["햇반","8~10개"],["라면 (어른 매운맛 + 아이 순한맛/짜장)"],["생수 2L","4~6병"],
+  ["아이 음료 · 이온음료 · 탄산"],["맥주 · 소주"],["과자 · 안주용 포 · 견과류"],
+ ]},
+ {name:"🌊 물놀이 · 여름", items:[
+  ["래쉬가드","1인 2벌"],["챙 넓은 모자 · 선글라스"],["비치타월"],["튜브 · 모래놀이/갯벌 도구"],
+  ["선크림 · 선스틱"],["알로에 수딩젤"],
+ ]},
+ {name:"💊 상비약", items:[
+  ["해열제 (아이용)"],["소화제 · 지사제 · 종합감기약"],["멀미약","차량/배 대비"],
+  ["방수 밴드 · 습윤 밴드 · 연고"],["모기기피제 · 벌레물림약"],
+ ]},
+ {name:"🏡 펜션 · 편의용품", items:[
+  ["대용량 물티슈 · 키친타올"],["크린랩 · 호일 · 일회용 장갑"],["지퍼백 (남은 음식 · 해루질 수확물!)"],
+  ["보드게임 · 트럼프 카드"],["아이들 간식"],
+ ]},
+];
+const KEY="gunsan-trip-checks";
+let saved={}; try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+const wrapC=document.getElementById("checklists");
+wrapC.innerHTML=lists.map((g,gi)=>`<div class="card">
+  <h3>${g.name}</h3>
+  <ul class="chk">${g.items.map((it,ii)=>{
+    const id="c"+gi+"_"+ii;
+    return `<li><label><input type="checkbox" id="${id}" ${saved[id]?"checked":""}>
+      <span>${it[0]}${it[1]?` <span class="amt">${it[1]}</span>`:""}</span></label></li>`;
+  }).join("")}</ul></div>`).join("");
+function updateProg(){
+  const all=wrapC.querySelectorAll("input"), done=wrapC.querySelectorAll("input:checked");
+  document.getElementById("chkTotal").textContent=all.length;
+  document.getElementById("chkDone").textContent=done.length;
+}
+wrapC.addEventListener("change",e=>{
+  if(e.target.matches("input")){ saved[e.target.id]=e.target.checked;
+    try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(err){}
+    updateProg(); }
+});
+document.getElementById("chkReset").addEventListener("click",()=>{
+  saved={}; try{localStorage.removeItem(KEY)}catch(e){}
+  wrapC.querySelectorAll("input").forEach(i=>i.checked=false); updateProg();
+});
+updateProg();
+
+/* ---------- food ---------- */
+const foods=[
+ {n:"한일옥",m:"소고기무국 · 육회비빔밥",p:"초원사진관 바로 맞은편 한옥 맛집. 맑고 깊은 무국이 자극적이지 않아 아이들 밥 한 그릇 뚝딱.",t:"Day 3 점심으로 동선 딱!"},
+ {n:"진갈비 · 완주옥",m:"떡갈비 · 곰탕",p:"군산 명물 숯불 떡갈비. 달콤짭조름해서 11살·9살 입맛 저격. 맑은 곰탕 국물까지 완벽.",t:"Day 2 저녁 추천"},
+ {n:"장미칼국수",m:"칼국수 · 수제만두 · 돌솥비빔밥",p:"멸치육수 칼국수와 쫄깃한 만두. 면 좋아하는 아이들과 부담 없는 점심.",t:""},
+ {n:"빈해원",m:"간짜장 · 탕수육 · 짬뽕",p:"등록문화재 중식당, 영화 촬영지. 독특한 내부에 아이들도 신기해해요.",t:"Day 1 점심 추천"},
+ {n:"이성당",m:"단팥빵 · 야채빵 · 밀크쉐이크",p:"한국에서 가장 오래된 빵집. 여행 중 출출함 달래기 + 귀가길 기념 빵쇼핑.",t:"Day 3 오후 — 단팥빵은 웨이팅 감안!"},
+];
+document.getElementById("foodcards").innerHTML=foods.map(f=>`<div class="card food">
+  <h3>${f.n}</h3><div class="menuLine">${f.m}</div><p>${f.p}</p>
+  ${f.t?`<div class="tip">💡 ${f.t}</div>`:""}</div>`).join("");
+</script>
+
+</body>
+</html>
