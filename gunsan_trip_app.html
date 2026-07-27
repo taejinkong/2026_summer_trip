@@ -130,6 +130,16 @@ h3{font-size:.95rem; margin:0 0 6px}
 .tl .t{font-size:.75rem; color:var(--muted); font-variant-numeric:tabular-nums}
 .tl .name{font-weight:700; font-size:.92rem}
 .tl .note{font-size:.8rem; color:var(--ink2)}
+.mlink{
+  font-size:.68rem; color:var(--sea); text-decoration:none; font-weight:700;
+  border:1px solid var(--line); border-radius:999px; padding:1px 8px; margin-left:6px;
+  vertical-align:2px; white-space:nowrap;
+}
+.mapcard{padding:14px 14px 10px}
+.mapcard svg{display:block; width:100%; height:auto; border-radius:10px}
+.mapnote{font-size:.72rem; color:var(--muted); margin:8px 2px 2px}
+.mappin{cursor:pointer}
+.mappin:focus-visible circle{stroke:var(--sea); stroke-width:3}
 
 /* ---------- tide ---------- */
 .stats{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:14px}
@@ -368,7 +378,7 @@ h3{font-size:.95rem; margin:0 0 6px}
     <div class="head"><span class="em">🏡</span><h3>네버엔딩스토리 펜션</h3></div>
     <span class="pill sea">숙소 · 2박</span>
     <ul class="fixed">
-      <li><span class="k">위치</span><span>변산반도 격포 인근 · 펜션 앞 해루질 포인트</span></li>
+      <li><span class="k">위치</span><span>부안군 변산면 대항길 71 · 펜션 앞 해루질 포인트 <a class="mlink" href="https://place.map.kakao.com/26133459" target="_blank" rel="noopener">📍 지도</a></span></li>
       <li><span class="k">체크인</span><span><b>8/1(토) 17:00</b> 입실 예정</span></li>
       <li><span class="k">체크아웃</span><span><b>8/3(월) 오전</b> (시간은 펜션 안내 확인)</span></li>
       <li><span class="k">인원</span><span>2가족 7명 (어른 4 · 아이 3)</span></li>
@@ -506,39 +516,113 @@ document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=
 const days = [
  {title:"레트로 체험 & 해루질 밤", items:[
   {t:"오전",  n:"군산으로 출발", d:"휴게소 간식 타임"},
-  {t:"12:30", n:"점심 — 군산 명물 짬뽕 or 물짜장", d:"국제반점 물짜장 추천 · 타짜 촬영지 (맛집 탭)"},
-  {t:"14:00", n:"경암동 철길마을", d:"달고나 만들기 · 옛날과자 · 추억의 뽑기"},
-  {t:"15:30", n:"군산 근대역사박물관", d:"실내라 더위 피하기 좋아요"},
-  {t:"17:00", n:"네버엔딩스토리 펜션 체크인", d:"변산 격포 · 짐 풀고 정비"},
+  {t:"12:30", n:"점심 — 군산 명물 짬뽕 or 물짜장", d:"국제반점 물짜장 추천 · 타짜 촬영지 (맛집 탭)", s:"국제반점", k:"14881043", lat:35.9862, lng:126.7150},
+  {t:"14:00", n:"경암동 철길마을", d:"달고나 만들기 · 옛날과자 · 추억의 뽑기", s:"철길마을", k:"25046668", lat:35.9790, lng:126.7228},
+  {t:"15:30", n:"군산 근대역사박물관", d:"실내라 더위 피하기 좋아요", s:"박물관", k:"17165827", lat:35.9885, lng:126.7106},
+  {t:"17:00", n:"네버엔딩스토리 펜션 체크인", d:"부안 변산면 대항길 71 · 짐 풀고 정비", s:"펜션", k:"26133459", lat:35.6910, lng:126.5290},
   {t:"18:30", n:"펜션 바베큐 파티 🍖", d:"마시멜로 꼬치구이는 필수!"},
   {t:"20:00", n:"해루질 장비 점검", d:"구명조끼 · 랜턴 · 양동이 (물때 탭!)", night:true},
   {t:"21:00", n:"펜션 앞 해루질 입수 🔦", d:"골든타임 21:00~22:34", night:true},
   {t:"22:30", n:"철수 알람 → 야식 & 취침", d:"간조 22:34 후 물이 빠르게 차요", night:true},
  ]},
  {title:"고군산군도 물놀이 & 액티비티", items:[
-  {t:"오전",  n:"선유도 해수욕장 이동", d:"짚라인 or 갯벌 체험"},
+  {t:"오전",  n:"선유도 해수욕장 이동", d:"짚라인 or 갯벌 체험", s:"선유도", k:"10493031", lat:35.8139, lng:126.4100},
   {t:"12:30", n:"점심 — 선유도/무녀도", d:"해산물 · 칼국수 · 수제버거"},
-  {t:"14:30", n:"옥돌해수욕장 데크길 산책", d:"or 숙소 물놀이로 체력 조절"},
-  {t:"18:00", n:"저녁 — 군산 시내 맛집", d:"떡갈비 · 한정식 (맛집 탭 참고)"},
-  {t:"20:00", n:"숙소에서 보드게임 & 휴식", d:"전날 밤샘(?) 해루질 회복 타임"},
+  {t:"14:30", n:"옥돌해수욕장 데크길 산책", d:"or 숙소 물놀이로 체력 조절", s:"옥돌해변", k:"252285214", lat:35.8070, lng:126.4210},
+  {t:"18:00", n:"저녁 — 군산 시내 맛집", d:"진갈비 떡갈비 추천 (맛집 탭 참고)", s:"진갈비", k:"9986937", lat:35.9822, lng:126.7125},
+  {t:"20:00", n:"숙소에서 보드게임 & 휴식", d:"전날 밤샘(?) 해루질 회복 타임", s:"펜션", k:"26133459", lat:35.6910, lng:126.5290},
  ]},
  {title:"명소 탐방 & 기념품, 귀가", items:[
-  {t:"오전",  n:"초원사진관", d:"'8월의 크리스마스' 촬영지 기념사진"},
-  {t:"11:00", n:"히로쓰 가옥 (신흥동 일본식 가옥)", d:"근대문화유산 산책"},
-  {t:"12:30", n:"점심 — 소고기무국", d:"현지인 픽 락원천국장 or 초원사진관 앞 한일옥"},
-  {t:"14:00", n:"이성당 빵쇼핑 🍞", d:"미리 전화 주문하면 줄 안 서요! 탱탱만두 100개 포장도"},
+  {t:"오전",  n:"초원사진관", d:"'8월의 크리스마스' 촬영지 기념사진", s:"초원사진관", k:"19263503", lat:35.9843, lng:126.7090},
+  {t:"11:00", n:"히로쓰 가옥 (신흥동 일본식 가옥)", d:"근대문화유산 산책", s:"히로쓰가옥", k:"26381326", lat:35.9817, lng:126.7080},
+  {t:"12:30", n:"점심 — 소고기무국", d:"현지인 픽 락원천국장 or 초원사진관 앞 한일옥", s:"락원천국장", k:"8230019", lat:35.9832, lng:126.7105},
+  {t:"14:00", n:"이성당 빵쇼핑 🍞", d:"미리 전화 주문하면 줄 안 서요! 탱탱만두 100개 포장도", s:"이성당", k:"8055670", lat:35.9875, lng:126.7213},
   {t:"15:00", n:"안전하게 귀가", d:"수고했어요! 🚗"},
  ]},
 ];
+function kakaoUrl(k){ return "https://place.map.kakao.com/"+k; }
+function renderMap(i){
+  const pts = days[i].items
+    .map((it,j)=>({s:it.s,k:it.k,lat:it.lat,lng:it.lng,n:j+1,night:it.night}))
+    .filter(p=>p.lat);
+  if(pts.length<2) return "";
+  const W=360,H=225,M=34;
+  const midRad = pts.reduce((a,p)=>a+p.lat,0)/pts.length*Math.PI/180;
+  const cosm = Math.cos(midRad);
+  const xs=pts.map(p=>p.lng*cosm), ys=pts.map(p=>p.lat);
+  const minx=Math.min(...xs), maxx=Math.max(...xs), miny=Math.min(...ys), maxy=Math.max(...ys);
+  const dx=Math.max(maxx-minx,1e-5), dy=Math.max(maxy-miny,1e-5);
+  const sc=Math.min((W-2*M)/dx,(H-2*M)/dy);
+  pts.forEach((p,idx)=>{
+    p.x = M+(xs[idx]-minx)*sc + ((W-2*M)-dx*sc)/2;
+    p.y = H-(M+(ys[idx]-miny)*sc + ((H-2*M)-dy*sc)/2);
+  });
+  // spread overlapping markers so numbers stay readable
+  for(let it2=0; it2<60; it2++){
+    let moved=false;
+    for(let a=0;a<pts.length;a++) for(let b=a+1;b<pts.length;b++){
+      const ddx=pts[b].x-pts[a].x, ddy=pts[b].y-pts[a].y;
+      const d=Math.hypot(ddx,ddy)||.01;
+      if(d<34){
+        const ux=ddx/d, uy=ddy/d;
+        pts[a].x-=ux; pts[a].y-=uy; pts[b].x+=ux; pts[b].y+=uy; moved=true;
+      }
+    }
+    if(!moved) break;
+  }
+  pts.forEach(p=>{
+    p.x=Math.max(18,Math.min(W-18,p.x)); p.y=Math.max(18,Math.min(H-24,p.y));
+  });
+  // scale bar: sc is px per degree-lat; 1 deg lat ≈ 111km
+  const kmPer40px = 40/sc*111;
+  const scaleTxt = kmPer40px>=1 ? kmPer40px.toFixed(kmPer40px>=10?0:1)+"km" : Math.round(kmPer40px*1000)+"m";
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Day ${i+1} 이동 동선 약식 지도">`;
+  s+=`<rect x="0" y="0" width="${W}" height="${H}" fill="var(--sea-soft)" opacity=".45"/>`;
+  for(let g=1;g<6;g++){
+    s+=`<line x1="${W/6*g}" x2="${W/6*g}" y1="0" y2="${H}" stroke="var(--line)" stroke-width=".7" opacity=".6"/>`;
+    if(g<4) s+=`<line x1="0" x2="${W}" y1="${H/4*g}" y2="${H/4*g}" stroke="var(--line)" stroke-width=".7" opacity=".6"/>`;
+  }
+  s+=`<polyline points="${pts.map(p=>p.x.toFixed(1)+","+p.y.toFixed(1)).join(" ")}" fill="none" stroke="var(--sea)" stroke-width="2" stroke-dasharray="5 4" stroke-linejoin="round" opacity=".75"/>`;
+  pts.forEach(p=>{
+    s+=`<a class="mappin" href="${kakaoUrl(p.k)}" target="_blank" rel="noopener" aria-label="${p.s} 카카오맵에서 보기">`;
+    s+=`<circle cx="${p.x}" cy="${p.y}" r="10" fill="${p.s==="펜션"?"var(--night)":"var(--sea)"}" stroke="var(--surface)" stroke-width="2"/>`;
+    s+=`<text x="${p.x}" y="${p.y+3.5}" text-anchor="middle" font-size="9.5" font-weight="800" fill="#fff">${p.n}</text>`;
+    s+=`</a>`;
+  });
+  // label placement: pick the first of below/above/right/left that hits no pin or placed label
+  const hit=(a,b)=>a[0]<b[2]&&b[0]<a[2]&&a[1]<b[3]&&b[1]<a[3];
+  const placedBoxes=[];
+  pts.forEach(p=>{
+    const w=p.s.length*9+6, h2=11;
+    const cands=[
+      {x:p.x, y:p.y+23, a:"middle", box:[p.x-w/2, p.y+13, p.x+w/2, p.y+13+h2]},
+      {x:p.x, y:p.y-15, a:"middle", box:[p.x-w/2, p.y-15-h2, p.x+w/2, p.y-13]},
+      {x:p.x+15, y:p.y+3, a:"start",  box:[p.x+15, p.y-6, p.x+15+w, p.y+5]},
+      {x:p.x-15, y:p.y+3, a:"end",    box:[p.x-15-w, p.y-6, p.x-15, p.y+5]},
+    ];
+    const pinBoxes=pts.filter(q=>q!==p).map(q=>[q.x-11,q.y-11,q.x+11,q.y+11]);
+    let c=cands.find(cd=> cd.box[0]>2 && cd.box[2]<W-2 && cd.box[1]>2 && cd.box[3]<H-2
+        && !pinBoxes.some(b=>hit(cd.box,b)) && !placedBoxes.some(b=>hit(cd.box,b)));
+    if(!c) c=cands[0];
+    placedBoxes.push(c.box);
+    s+=`<text x="${c.x}" y="${c.y}" text-anchor="${c.a}" font-size="8.5" font-weight="700"
+      fill="var(--ink2)" stroke="var(--surface)" stroke-width="2.5" paint-order="stroke" style="pointer-events:none">${p.s}</text>`;
+  });
+  s+=`<line x1="${W-58}" x2="${W-18}" y1="${H-12}" y2="${H-12}" stroke="var(--ink2)" stroke-width="1.5"/>`;
+  s+=`<text x="${W-38}" y="${H-17}" text-anchor="middle" font-size="8.5" fill="var(--ink2)">≈${scaleTxt}</text>`;
+  s+=`</svg>`;
+  return `<div class="card mapcard"><h2 style="margin-bottom:10px">🗺️ Day ${i+1} 동선 지도</h2>${s}
+    <p class="mapnote">위치 비율 기반 약식 지도 · 핀을 누르면 카카오맵으로 열려요</p></div>`;
+}
 const dayviews = document.getElementById("dayviews");
 function renderDay(i){
   const d = days[i];
-  dayviews.innerHTML = `<div class="card">
+  dayviews.innerHTML = renderMap(i) + `<div class="card">
     <div class="dayhead"><h2>${d.title}</h2></div>
     <ul class="tl">${d.items.map((it,j)=>`
       <li data-n="${j+1}" class="${it.night?"night":""}">
         <div class="t">${it.t}</div>
-        <div class="name">${it.n}</div>
+        <div class="name">${it.n}${it.k?` <a class="mlink" href="${kakaoUrl(it.k)}" target="_blank" rel="noopener">📍 지도</a>`:""}</div>
         <div class="note">${it.d}</div>
       </li>`).join("")}
     </ul></div>`;
