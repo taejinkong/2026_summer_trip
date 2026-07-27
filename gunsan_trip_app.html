@@ -201,6 +201,15 @@ h3{font-size:.95rem; margin:0 0 6px}
 .reset{border:0; background:none; color:var(--muted); font-size:.75rem; cursor:pointer; font-family:inherit; text-decoration:underline; padding:0}
 
 /* ---------- food ---------- */
+.filters{display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap}
+.filters button{
+  border:1px solid var(--line); background:var(--surface); border-radius:999px;
+  padding:5px 12px; font-size:.78rem; color:var(--ink2); cursor:pointer; font-family:inherit;
+}
+.filters button.on{background:var(--ink); color:var(--frame); border-color:var(--ink); font-weight:700}
+.filters button:focus-visible{outline:2px solid var(--sea); outline-offset:2px}
+.food .badges{display:flex; gap:6px; margin:0 0 8px; flex-wrap:wrap}
+.food .loc{font-size:.75rem; color:var(--muted); margin:-2px 0 6px}
 .food .menuLine{font-size:.8rem; color:var(--sea); font-weight:700; margin-bottom:6px}
 .food p{margin:0; font-size:.86rem; color:var(--ink2)}
 .food .tip{margin-top:8px; background:var(--sand-soft); color:var(--sand); border-radius:10px; padding:8px 10px; font-size:.8rem}
@@ -396,13 +405,17 @@ h3{font-size:.95rem; margin:0 0 6px}
 <!-- ================= FOOD ================= -->
 <section class="page" id="page-food">
   <div class="eyebrow" style="margin-bottom:4px">Restaurants</div>
-  <h2 style="margin-bottom:2px">아이랑 가기 좋은 군산 맛집</h2>
-  <p class="sub" style="margin:0 0 14px">맵지 않고, 가족 단위로 앉기 좋은 곳 위주</p>
-  <div id="foodcards"></div>
-  <div class="card food">
-    <h3>💡 중식 방문 팁</h3>
-    <p>유명한 '지린성' 고추짜장은 <b>매우 매워서</b> 아이들과는 어려워요. 아이들과는 탕수육·간짜장이 맛있는 전통 중식당(빈해원)을 추천!</p>
+  <h2 style="margin-bottom:2px">군산 현지인 맛집표</h2>
+  <p class="sub" style="margin:0 0 12px">현지인 추천 20곳 · ⭐는 아이 입맛에도 무난한 곳</p>
+  <div class="filters" id="foodFilters">
+    <button data-f="all" class="on">전체</button>
+    <button data-f="식사">식사</button>
+    <button data-f="중식">중식</button>
+    <button data-f="빵만두">빵·만두</button>
+    <button data-f="카페">카페</button>
+    <button data-f="kid">⭐ 아이 OK</button>
   </div>
+  <div id="foodcards"></div>
 </section>
 
 </main>
@@ -455,7 +468,7 @@ document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=
 const days = [
  {title:"레트로 체험 & 해루질 밤", items:[
   {t:"오전",  n:"군산으로 출발", d:"휴게소 간식 타임"},
-  {t:"12:30", n:"점심 — 군산 명물 짬뽕 or 물짜장", d:"빈해원 등 (맛집 탭 참고)"},
+  {t:"12:30", n:"점심 — 군산 명물 짬뽕 or 물짜장", d:"국제반점 물짜장 추천 · 타짜 촬영지 (맛집 탭)"},
   {t:"14:00", n:"경암동 철길마을", d:"달고나 만들기 · 옛날과자 · 추억의 뽑기"},
   {t:"15:30", n:"군산 근대역사박물관", d:"실내라 더위 피하기 좋아요"},
   {t:"17:00", n:"네버엔딩스토리 펜션 체크인", d:"변산 격포 · 짐 풀고 정비"},
@@ -474,8 +487,8 @@ const days = [
  {title:"명소 탐방 & 기념품, 귀가", items:[
   {t:"오전",  n:"초원사진관", d:"'8월의 크리스마스' 촬영지 기념사진"},
   {t:"11:00", n:"히로쓰 가옥 (신흥동 일본식 가옥)", d:"근대문화유산 산책"},
-  {t:"12:30", n:"점심 — 한일옥 소고기무국", d:"초원사진관 바로 맞은편"},
-  {t:"14:00", n:"이성당 빵쇼핑 🍞", d:"단팥빵 · 야채빵 포장, 밀크쉐이크"},
+  {t:"12:30", n:"점심 — 소고기무국", d:"현지인 픽 락원천국장 or 초원사진관 앞 한일옥"},
+  {t:"14:00", n:"이성당 빵쇼핑 🍞", d:"미리 전화 주문하면 줄 안 서요! 탱탱만두 100개 포장도"},
   {t:"15:00", n:"안전하게 귀가", d:"수고했어요! 🚗"},
  ]},
 ];
@@ -641,13 +654,42 @@ updateProg();
 
 /* ---------- food ---------- */
 const foods=[
- {n:"한일옥",m:"소고기무국 · 육회비빔밥",p:"초원사진관 바로 맞은편 한옥 맛집. 맑고 깊은 무국이 자극적이지 않아 아이들 밥 한 그릇 뚝딱.",t:"Day 3 점심으로 동선 딱!"},
- {n:"진갈비 · 완주옥",m:"떡갈비 · 곰탕",p:"군산 명물 숯불 떡갈비. 달콤짭조름해서 11살·9살 입맛 저격. 맑은 곰탕 국물까지 완벽.",t:"Day 2 저녁 추천"},
- {n:"장미칼국수",m:"칼국수 · 수제만두 · 돌솥비빔밥",p:"멸치육수 칼국수와 쫄깃한 만두. 면 좋아하는 아이들과 부담 없는 점심.",t:""},
- {n:"빈해원",m:"간짜장 · 탕수육 · 짬뽕",p:"등록문화재 중식당, 영화 촬영지. 독특한 내부에 아이들도 신기해해요.",t:"Day 1 점심 추천"},
- {n:"이성당",m:"단팥빵 · 야채빵 · 밀크쉐이크",p:"한국에서 가장 오래된 빵집. 여행 중 출출함 달래기 + 귀가길 기념 빵쇼핑.",t:"Day 3 오후 — 단팥빵은 웨이팅 감안!"},
+ {n:"군산실비횟집",c:"식사",m:"회",l:"명산동 11-12",p:"별 다섯 개 강력 추천, 말이 필요 없음. 유사업체 현대횟집(나운동)도 있으나 예약 필수."},
+ {n:"명월갈비",c:"식사",m:"소갈비",l:"구영 7길 59",p:"가성비 좋은 소갈비. 밥이랑 곰탕이랑 같이 먹으면 너무 맛있음.",kid:1},
+ {n:"삼거리매운탕 · 궁전매운탕",c:"식사",m:"민물매운탕",l:"나운동 871-8",p:"솥밥에 한정식처럼 나오는 밑반찬, 전라도 밥상 느낌. 사람 많으면 옆집 궁전매운탕을 대안으로."},
+ {n:"이성당",c:"빵만두",m:"야채빵 · 단팥빵 · 밀크쉐이크",l:"중앙로 177",p:"야채빵·단팥빵·밀크쉐이크 강력 추천, 고로케 등 다른 빵도 맛있음. 노란 쇼핑백은 군산의 상징!",t:"야채빵·단팥빵은 줄 서야 하는데 미리 전화 주문하면 바로 받아요 — Day 3 빵쇼핑 필수 팁!",kid:1},
+ {n:"탱탱만두",c:"빵만두",m:"얇은피 만두",l:"동리 2길 1",p:"군산 갈 때마다 100개 세트 사다가 냉동해 놓고 먹는 곳. 얇은 피 만두 최고.",t:"100개 세트는 전화 예약 필수 — 냉동 기념품으로 강추!",kid:1},
+ {n:"락원천국장",c:"식사",m:"소고기무국",l:"구영 3길 21-1",p:"현지인들은 한일옥 안 가고 여기로. 원래 한정식집이라 소고기무국 시키면 반찬이 한정식처럼 나와요.",t:"Day 3 점심 후보 — 관광객 코스 한일옥 대신 현지인 픽!",kid:1},
+ {n:"진갈비",c:"식사",m:"떡갈비",l:"구영 1길 108-7",p:"떡갈비 맛집. 현지인·관광객 다 많이 가는 곳.",t:"Day 2 저녁 추천 — 달콤한 떡갈비는 아이들 입맛 저격",kid:1},
+ {n:"국제반점",c:"중식",m:"물짜장",l:"영화동 22-8 (구영 6길 100)",p:"물짜장 맛집, 영화 '타짜' 촬영지.",t:"Day 1 점심 물짜장 후보!",kid:1},
+ {n:"지린성",c:"중식",m:"고추짜장",l:"미원로 87",p:"대표 메뉴 고추짜장. 현지인 맛집이었는데 줄 서서 이젠 현지인이 못 먹는 곳. 짬뽕은 평범, 고추짜장이 먹을 만함.",t:"⚠️ 고추짜장은 매워요 — 아이들과는 국제반점 물짜장 추천"},
+ {n:"비행장정문부대찌개",c:"식사",m:"부대찌개 · 햄버거",l:"하나운안 2길 15-4",p:"옛날 미군부대 앞에 있어서 이름이 '정문부대찌개'. 햄버거를 꼭 같이 시켜 먹어야 함."},
+ {n:"또또생곱창",c:"식사",m:"곱창 · 막창",l:"하나운안 2길 15-4",p:"매콤한 곱창볶음이 술안주로 최고.",t:"바베큐 다음 날 어른들 회식용? 🍻"},
+ {n:"장미칼국수",c:"식사",m:"칼국수 · 돌솥비빔밥",l:"본점 큰샘길 26 · 직영점 수송남로 20",p:"칼국수 맛집인데 돌솥비빔밥이 끝내줌 — 둘 다 꼭 시켜야 함. 콩국수파는 콩국수도 많이 먹어요. 직영점이 새로 생겨 더 깔끔.",kid:1},
+ {n:"안동집",c:"식사",m:"삼겹살 · 제육",l:"아리랑로 39",p:"삼겹살과 제육볶음, 된장찌개 맛있는 옛날 스타일 집.",kid:1},
+ {n:"일흥옥",c:"식사",m:"콩나물국밥",l:"구영 7길 25",p:"군산 스타일 콩나물국밥. 해장으로 좋고 가격도 저렴(7,000원)."},
+ {n:"영국빵집",c:"빵만두",m:"빵",l:"대학로 144-1",p:"이성당 다음 두 번째 맛집. 근데 사실 이성당은 못 이김 😄",kid:1},
+ {n:"파라디소페르두또",c:"식사",m:"이탈리안",l:"한밭로 76-11",p:"은파호수공원이 보이는 뷰 좋은 레스토랑.",kid:1},
+ {n:"카페라파르",c:"카페",m:"카페",l:"장자도 2길 31",p:"선유도 지나 장자도라 가기 힘들지만, 대장봉 내려와서 바다 보며 시원하게 차 마시기 좋은 곳.",t:"Day 2 선유도 동선과 딱!"},
+ {n:"빈타이 군산은파점",c:"카페",m:"대형카페",l:"한밭로 76-10",p:"은파호수공원 뷰 좋은 대형카페. 대형카페치고 가격이 착하고 구경하기 좋음."},
+ {n:"공감선유",c:"카페",m:"갤러리 카페",l:"수왕새터길 53",p:"시간 많을 때 가보면 좋은 갤러리 카페. 힐링하기 좋음."},
+ {n:"틈",c:"카페",m:"카페",l:"구영 6길 125-1",p:"시내라 동선 좋고 가기 만만한데, 분위기 좋고 맛도 좋은 곳."},
 ];
-document.getElementById("foodcards").innerHTML=foods.map(f=>`<div class="card food">
-  <h3>${f.n}</h3><div class="menuLine">${f.m}</div><p>${f.p}</p>
-  ${f.t?`<div class="tip">💡 ${f.t}</div>`:""}</div>`).join("");
+const catLabel={식사:"식사",중식:"중식",빵만두:"빵·만두",카페:"카페"};
+function renderFoods(f){
+  document.getElementById("foodcards").innerHTML=foods
+   .filter(x=> f==="all" || (f==="kid" ? x.kid : x.c===f))
+   .map(x=>`<div class="card food">
+    <h3>${x.n}</h3>
+    <div class="badges"><span class="pill sea">${catLabel[x.c]}</span>${x.kid?`<span class="pill good">⭐ 아이 OK</span>`:""}</div>
+    <div class="menuLine">${x.m}</div>
+    <div class="loc">📍 ${x.l}</div>
+    <p>${x.p}</p>
+    ${x.t?`<div class="tip">💡 ${x.t}</div>`:""}</div>`).join("");
+}
+document.querySelectorAll("#foodFilters button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll("#foodFilters button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); renderFoods(b.dataset.f);
+}));
+renderFoods("all");
 </script>
